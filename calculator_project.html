@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            /* border: 2px solid red; */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items:center ;
+            background-color: lightskyblue;
+        }
+
+        section{
+            border: 2px solid black;
+            background-color: black;
+            border-radius: 10px;
+            width: 300px;
+            height: 377px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+         .displaydiv{
+            border: 0px solid orange;
+            width: 100%;
+            height: 95px;
+            background-color: black;
+            color: white;
+            font-size: 18px;
+        }
+
+        section table input{
+            display: inline-block;
+            border: 0px solid red;
+            width: 65px;
+            height: 50px;
+            /* padding: 30px 0; */
+            border-radius:50% ;
+            
+        }
+
+        section table input:hover{
+            background-color: darkgray;
+        }
+        #ora:hover{
+            background-color: darkgray;
+        }
+        #c1:hover{
+            background-color: darkgray;
+        }
+
+        #zero{
+            /* padding: 10px; */
+            /* border: 2px solid red; */
+            width: 130px;
+            height: 50px;
+            border-radius:40% ;
+        }
+
+        .c1{
+            background-color: silver;
+            color: black;
+            font-size: 16px;
+        }
+        #c1{
+            background-color: silver;
+            color: black;
+            font-size: 16px;
+        }
+
+        #ora{
+            background-color: orange;
+            color: black;
+            font-size: 16px;
+        }
+        .ora{
+            background-color: orange;
+            color: black;
+            font-size: 16px;
+        }
+
+        .in{
+            background-color: rgb(114, 101, 101);
+            color: white;
+        }
+       
+
+
+      
+       
+     
+    </style>
+</head>
+<body>
+    <section>
+        <table>
+            <input type="text" id="equation" class="displaydiv">
+           <tbody>
+            <tr>
+                <td><input id="clearone" class="c1" onclick="clearone()" type="button" value="C"></td>
+                <td><input id="clearall" class="c1" onclick="clearall()" type="button" value="AC"></td>
+                <td><input class="in" id="c1" type="button" value="%"></td>
+                <td><input class="in" id="ora" type="button" value="/"></td>
+            </tr>
+
+            <tr>
+                <td><input class="in" type="button" value="7"></td>
+                <td><input class="in" type="button" value="8"></td>
+                <td><input class="in" type="button" value="9"></td>
+                <td><input class="in" type="button" id="ora" value="*"></td>
+            </tr>
+
+            <tr>
+                <td><input class="in" type="button" value="4"></td>
+                <td><input class="in" type="button" value="5"></td>
+                <td><input class="in" type="button" value="6"></td>
+                <td><input class="in" type="button" id="ora" value="-"></td>
+            </tr>
+
+            <tr>
+                <td><input class="in" type="button" value="1"></td>
+                <td><input class="in" type="button" value="2"></td>
+                <td><input class="in" type="button" value="3"></td>
+                <td><input class="in" type="button" id="ora" value="+"></td>
+            </tr>
+
+           
+
+            <tr>
+                <td colspan="2"><input id="zero" class="in" type="button" value="0"></td>
+                <td><input class="in" type="button" value="."></td>
+                <td><input id="solve" type="button" onclick="solve()" class="ora" value="="></td>
+            </tr>
+
+            
+           </tbody>
+        </table>
+    </section>
+
+    <script>
+
+let eq = document.getElementById("equation");
+      let inputs = document.querySelectorAll("input.in");
+      console.log(inputs.length);
+
+      inputs.forEach(x=>{
+        console.log(x);
+        x.addEventListener("click",()=>{
+            eq.value += x.value;
+        })
+      })
+
+      function clearall(){
+        eq.value = "";
+      }
+
+      function solve(){
+        eq.value = eval(eq.value);
+      }
+
+      function clearone(){
+        eq.value = eq.value.slice(0,eq.value.length -1);
+      }
+    </script>
+</body>
+</html>
